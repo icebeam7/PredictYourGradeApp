@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PredictYourGradeApp.Views.PredictionGradeView"
+             xmlns:converters="clr-namespace:PredictYourGradeApp.Converters"
+             Title="Grade Prediction Page">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IntStringConverter x:Key="IntStringConverter" />
+            
+            <Style TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Blue" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid BackgroundColor="White" Padding="5" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Sex"/>
+                <Picker Grid.Row="0" Grid.Column="1" 
+                        SelectedIndex="{Binding Sex, Converter={StaticResource IntStringConverter}, 
+                                        ConverterParameter=sex, Mode=TwoWay}">
+                    <Picker.Items>
+                        <x:String>F</x:String>
+                        <x:String>M</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Home to School Travel Time"/>
+                <Picker Grid.Row="1" Grid.Column="1" 
+                        SelectedIndex="{Binding TravelTime, Converter={StaticResource IntStringConverter}, 
+                                        ConverterParameter=traveltime, Mode=TwoWay}">
+                    <Picker.Items>
+                        <x:String>0 to 15 minutes</x:String>
+                        <x:String>15 to 30 minutes</x:String>
+                        <x:String>30 to 60 minutes</x:String>
+                        <x:String>More than one hour</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Weekly Study Time"/>
+                <Picker Grid.Row="2" Grid.Column="1" 
+                        SelectedIndex="{Binding StudyTime, Converter={StaticResource IntStringConverter}, 
+                                        ConverterParameter=studytime, Mode=TwoWay}">
+                    <Picker.Items>
+                        <x:String>0 to 2 hours</x:String>
+                        <x:String>2 to 5 hours</x:String>
+                        <x:String>5 to 9 hours</x:String>
+                        <x:String>More than 10 hours</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Internet"/>
+                <Picker Grid.Row="3" Grid.Column="1" 
+                        SelectedIndex="{Binding Internet, Converter={StaticResource IntStringConverter}, 
+                                        ConverterParameter=internet, Mode=TwoWay}">
+                    <Picker.Items>
+                        <x:String>Yes</x:String>
+                        <x:String>No</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Grid.Row="4" Grid.Column="0" Text="G1"/>
+                <Entry Grid.Row="4" Grid.Column="1" Text="{Binding G1, Converter={StaticResource IntStringConverter}, 
+                                        ConverterParameter=grade, Mode=TwoWay}" Keyboard="Numeric"/>
+
+                <Label Grid.Row="5" Grid.Column="0" Text="G2"/>
+                <Entry Grid.Row="5" Grid.Column="1" Text="{Binding G2, Converter={StaticResource IntStringConverter}, 
+                                        ConverterParameter=grade, Mode=TwoWay}" Keyboard="Numeric"/>
+
+                <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
+                        Text="Predict your grade!" Command="{Binding PredictCommand}" />
+
+                <Label Grid.Row="7" Grid.Column="0" Text="Final Grade"/>
+                <Label Grid.Row="7" Grid.Column="1" Text="{Binding G3}" FontAttributes="Bold"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

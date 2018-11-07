@@ -11,7 +11,7 @@ namespace PredictYourGradeApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Views.PredictionGradeView());
         }
 
         protected override void OnStart()
