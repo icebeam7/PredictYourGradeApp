@@ -76,7 +76,7 @@
                     </Picker.Items>
                 </Picker>
 
-                <Label Grid.Row="3" Grid.Column="0" Text="Internet"/>
+                <Label Grid.Row="3" Grid.Column="0" Text="Internet access at home?"/>
                 <Picker Grid.Row="3" Grid.Column="1" 
                         SelectedIndex="{Binding Internet, Converter={StaticResource IntStringConverter}, 
                                         ConverterParameter=internet, Mode=TwoWay}">
@@ -86,11 +86,11 @@
                     </Picker.Items>
                 </Picker>
 
-                <Label Grid.Row="4" Grid.Column="0" Text="G1"/>
+                <Label Grid.Row="4" Grid.Column="0" Text="First period grade"/>
                 <Entry Grid.Row="4" Grid.Column="1" Text="{Binding G1, Converter={StaticResource IntStringConverter}, 
                                         ConverterParameter=grade, Mode=TwoWay}" Keyboard="Numeric"/>
 
-                <Label Grid.Row="5" Grid.Column="0" Text="G2"/>
+                <Label Grid.Row="5" Grid.Column="0" Text="Second period grade"/>
                 <Entry Grid.Row="5" Grid.Column="1" Text="{Binding G2, Converter={StaticResource IntStringConverter}, 
                                         ConverterParameter=grade, Mode=TwoWay}" Keyboard="Numeric"/>
 
